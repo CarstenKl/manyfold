@@ -44,12 +44,12 @@ function update_script() {
     $STD tar -czf "/opt/manyfold_${CURRENT_VERSION}_backup.tar.gz" -C /opt/manyfold app
     msg_ok "Backed up Data"
 
-    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "manyfold" "manyfold3d/manyfold" "tarball" "v0.132.2" "/opt/manyfold/app"
+    CLEAN_INSTALL=1 fetch_and_deploy_gh_release "manyfold" "manyfold3d/manyfold" "tarball" "v0.132.1" "/opt/manyfold/app"
 
     msg_info "Configuring Manyfold"
     RUBY_INSTALL_VERSION=$(cat /opt/manyfold/app/.ruby-version)
     YARN_VERSION=$(grep '"packageManager":' /opt/manyfold/app/package.json | sed -E 's/.*"(yarn@[0-9\.]+)".*/\1/')
-    RELEASE="v0.132.2"
+    RELEASE="v0.132.1"
     sed -i "s/^export APP_VERSION=.*/export APP_VERSION=$RELEASE/" "/opt/manyfold/.env"
     msg_ok "Configured Manyfold"
 
